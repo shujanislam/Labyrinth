@@ -1,33 +1,16 @@
 'use client'
 
 import { Card } from "@/components/ui/card"
-import Image from "next/image"
 import Link from "next/link"
+import { Brain } from "lucide-react" // Lucide icon
 
 const projects = [
   {
-    title: "Gemma",
-    description: "A family of lightweight, state-of-the-art open models.",
-    icon: "/icons/gemma.png",
-    links: ["Google AI Studio"],
-  },
-  {
-    title: "Veo",
-    description: "Our state-of-the-art video generation model.",
-    icon: "/icons/veo.png",
-    links: ["Gemini app", "Flow", "Google AI Studio", "Vertex AI Studio"],
-  },
-  {
-    title: "Imagen",
-    description: "Our leading text-to-image generation model.",
-    icon: "/icons/imagen.png",
-    links: ["Gemini app", "Whisk", "Google AI Studio", "Vertex AI Studio"],
-  },
-  {
-    title: "Lyria",
-    description: "Our latest music generation model.",
-    icon: "/icons/lyria.png",
-    links: ["MusicFX DJ", "Google AI Studio", "Vertex AI Studio"],
+    title: "TBNet",
+    description: "Advanced Tuberculosis detection with Neural Network",
+    icon: "brain", // logical placeholder, will render Brain icon
+    links: ["GitHub"],
+    links_value: ["https://github.com/Git-Blame-Society/TBNet"]
   },
 ]
 
@@ -36,9 +19,9 @@ export default function Project() {
     <section className="bg-background py-16">
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between mb-12">
-          <h2 className="text-3xl font-bold tracking-tight">Start Building</h2>
+          <h2 className="text-3xl font-bold tracking-tight">Projects</h2>
           <Link
-            href="/projects"
+            href="https://github.com/Git-Blame-Society/"
             className="text-sm px-4 py-2 border rounded-full hover:bg-muted transition"
           >
             View projects
@@ -53,13 +36,8 @@ export default function Project() {
               className="p-6 rounded-xl border bg-card text-card-foreground"
             >
               {/* Icon */}
-              <div className="w-12 h-12 mb-4">
-                <Image
-                  src={project.icon}
-                  alt={`${project.title} icon`}
-                  width={48}
-                  height={48}
-                />
+              <div className="w-12 h-12 mb-4 flex items-center justify-center">
+                {project.icon === "brain" && <Brain className="w-12 h-12 text-foreground" />}
               </div>
 
               {/* Title + description */}
@@ -77,7 +55,9 @@ export default function Project() {
                   {project.links.map((link, i) => (
                     <li key={i}>
                       <Link
-                        href="#"
+                        href={project.links_value[i]}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="text-sm hover:text-foreground transition"
                       >
                         {link} →
